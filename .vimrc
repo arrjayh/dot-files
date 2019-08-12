@@ -1,5 +1,9 @@
 " Robert Hickok
-" Vimrc for C Development
+execute pathogen#infect()
+autocmd BufNewFile,BufRead *.ts set filetype=typescript
+filetype off
+syntax on
+filetype plugin indent on
 
 set nocompatible        " Use Vim settings instead of Vi
 set enc=utf-8           " Set output encoding shown in terminal
@@ -24,7 +28,7 @@ set directory=/var/tmp,/tmp
 set backspace=indent,eol,start
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:· 
+set list listchars=tab:\ \ ,trail:·
 
 set autoindent
 set smartindent
@@ -41,11 +45,12 @@ autocmd FileType html,xhtml,xml,htm,sh setlocal shiftwidth=2
 autocmd FileType html,xhtml,xml,htm,sh setlocal softtabstop=2
 
 
+nmap <F1> :! tsc<CR>
 nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>i
 nmap <F3> :Ex<CR>
 map <F4> :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
-nmap <F6> :tab split<CR>
 nnoremap <F5> :set hlsearch!<CR>
+nmap <F6> :tab split<CR>
 
-set hlsearch!
+set nohlsearch
